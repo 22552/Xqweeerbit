@@ -143,7 +143,7 @@ app.post("/interactions", async (c) => {
   }
 });
 
-function discordMessage(c: Parameters<typeof app.get>[1] extends never ? never : any, content: string, ephemeral = false) {
+function discordMessage(c: any, content: string, ephemeral = false) {
   return c.json({
     type: MESSAGE,
     data: {
@@ -161,9 +161,9 @@ async function verifyDiscordRequest(
   body: string
 ): Promise<boolean> {
   try {
-    const publicKey = hexToBytes(publicKeyHex);
-    const signature = hexToBytes(signatureHex);
-    const data = new TextEncoder().encode(timestamp + body);
+    const publicKey = hexToBytes(publicKeyHex).buffer as ArrayBuffer;
+    const signature = hexToBytes(signatureHex).buffer as ArrayBuffer;
+    const data = new TextEncoder().encode(timestamp + body).buffer as ArrayBuffer;
     const key = await crypto.subtle.importKey(
       "raw",
       publicKey,

@@ -29,6 +29,7 @@ const EPHEMERAL = 1 << 6;
 const MESSAGE = 4;
 const DEFERRED_MESSAGE = 5;
 const PONG = 1;
+const INSTALL_URL = "https://discord.com/oauth2/authorize?client_id=1536643598148309012";
 
 app.get("/", (c) =>
   c.html(`<!doctype html>
@@ -38,12 +39,13 @@ app.get("/", (c) =>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>X — Discord utility bot</title>
   <style>
-    :root{color-scheme:dark}body{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0b0b0d;color:#f3f3f3;max-width:760px;margin:0 auto;padding:64px 24px;line-height:1.55}h1{font-size:clamp(48px,12vw,96px);margin:0}.muted{color:#a7a7ad}.cmd{display:inline-block;background:#18181d;border:1px solid #2b2b33;border-radius:8px;padding:4px 8px;margin:4px 2px}a{color:inherit}</style>
+    :root{color-scheme:dark}body{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0b0b0d;color:#f3f3f3;max-width:760px;margin:0 auto;padding:64px 24px;line-height:1.55}h1{font-size:clamp(48px,12vw,96px);margin:0}.muted{color:#a7a7ad}.cmd{display:inline-block;background:#18181d;border:1px solid #2b2b33;border-radius:8px;padding:4px 8px;margin:4px 2px}.install{display:inline-block;margin-top:18px;padding:12px 18px;border-radius:10px;background:#5865f2;color:white;text-decoration:none;font-weight:700;transition:transform .15s ease,filter .15s ease}.install:hover{transform:translateY(-1px);filter:brightness(1.08)}.install:active{transform:translateY(0)}a{color:inherit}</style>
 </head>
 <body>
   <h1>X.</h1>
   <p class="muted">X is a bot. A tiny Discord utility bot running on Hono + Cloudflare Workers.</p>
   <p><span class="cmd">/hash</span><span class="cmd">/random</span><span class="cmd">/qr</span><span class="cmd">/about</span></p>
+  <p><a class="install" href="${INSTALL_URL}">Install Bot</a></p>
   <p class="muted">No database. No gateway connection. No tracking.</p>
 </body>
 </html>`)
